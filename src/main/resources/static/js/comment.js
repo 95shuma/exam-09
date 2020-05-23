@@ -14,3 +14,7 @@ function addComment(id) {
     }).then(r => r.json());
     window.location.replace("http://localhost:8000/theme/");
 }
+
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+})

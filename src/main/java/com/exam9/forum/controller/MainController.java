@@ -94,7 +94,7 @@ public class MainController {
     }
 
     @RequestMapping("/theme/{id}")
-    public String getComments(HttpServletRequest uriBuilder,Model model,@PathVariable("id")Integer id, Pageable page, @RequestParam(value = "page",defaultValue = "") String p){
+    public String getComments(HttpServletRequest uriBuilder,Model model,@PathVariable("id")Integer id, Pageable page, @RequestParam(value = "page",defaultValue = "") String p, Principal principal){
         //tr.findThemeById(id);
         var uri = uriBuilder.getRequestURI();
         if(tr.findThemeById(id)!=null) {
@@ -106,6 +106,12 @@ public class MainController {
                 constructPageable1("comments",cr.findAllByTheme_Id(id, page), propertiesService.getDefaultPageSize(), model, uri);
             } else
                 constructPageable1("comments",cr.findAllByTheme_Id(id, page), propertiesService.getDefaultPageSize(), model, uri);
+        }
+        try{
+            User user = ur.findUserByMail(principal.getName());
+            model.addAttribute("user",user);
+        }catch (Exception e){
+
         }
         return "comment";
     }
