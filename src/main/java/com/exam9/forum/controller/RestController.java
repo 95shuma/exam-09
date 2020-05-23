@@ -30,6 +30,8 @@ public class RestController {
     @PostMapping("/theme/addComment")
     public Comment addComment(@RequestParam("text") String text, @RequestParam("id") Integer id){
         var theme = tr.findThemeById(id);
+        theme.setQty(theme.getQty()+1);
+        tr.save(theme);
         Comment comment = Comment.builder()
                 .ldt(LocalDateTime.now())
                 .text(text)

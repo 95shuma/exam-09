@@ -12,7 +12,7 @@ function addComment(id) {
         method: 'POST',
         body: data
     }).then(r => r.json());
-    window.location.replace("http://localhost:8000/theme/");
+    window.location.replace("http://localhost:8000/theme/"+id);
 }
 
 $('#myModal').on('shown.bs.modal', function () {

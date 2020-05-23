@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `forum`.`themes` (
 ENGINE = InnoDB;
 -- Table `forum`.`comments`
 CREATE TABLE IF NOT EXISTS `forum`.`comments` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `text` VARCHAR(255) NOT NULL,
   `ldt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `users_id` INT NOT NULL,

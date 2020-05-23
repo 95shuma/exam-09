@@ -69,6 +69,29 @@
             -->
             <#nested>
 
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-uppercase" id="exampleModalLabel">Create new comment</h5>
+                            <button type="button" class="close" data-dismiss="modal1" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form-comment" >
+                                <div class="form-group">
+                                    <label for="Name2">Comment text</label>
+                                    <input minlength="5" maxlength="100" name="text" type="text" class="form-control" id="text" aria-describedby="emailHelp" placeholder="Enter comment text">
+                                </div>
+                                <button type="button" onclick="addComment(${theme.id})" class="btn btn-primary">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     <#list scripts as scriptSource>

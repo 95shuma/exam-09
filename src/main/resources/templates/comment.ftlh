@@ -1,5 +1,5 @@
 <#import "partials/main.ftlh" as main />
-<@main.renderWith scripts=["/js/comments.js","https://code.jquery.com/jquery-3.4.1.slim.min.js","https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js","https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"] styles=["/css/main.css","https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css","https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"]>
+<@main.renderWith scripts=["/js/comment.js","https://code.jquery.com/jquery-3.4.1.slim.min.js","https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js","https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"] styles=["/css/main.css","https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css","https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"]>
     <#if theme??>
         <div class="row">
             <div class="col-5">${theme.name}</div>
@@ -10,13 +10,13 @@
             <div class="col-12">
                 ${theme.text}
                 <#if user??>
-                    <p style="font-size: 2em"><button type="button" class="btn btn-info" data-toggle="modal1" data-target="#exampleModal1">Add new comment</button></p>
+                    <p style="font-size: 2em"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Add new comment</button></p>
                 </#if>
             </div>
         </div>
         <#if comments??>
             <#list comments as comment>
-                <a href="/theme/${theme.id}"><div class="row">
+                <div class="row">
                         <div class="col-2">
                             <p><i class="fas fa-user-circle" style="font-size: 3em; color: black"></i></p>
                             <p>${comment.user.login}</p>
@@ -25,7 +25,7 @@
                             <p>${comment.ldt}</p>
                             <p>${comment.text}</p>
                         </div>
-                    </div></a>
+                    </div>
             </#list>
         </#if>
     </#if>
@@ -48,7 +48,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -69,6 +69,10 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
 
 </@main.renderWith>

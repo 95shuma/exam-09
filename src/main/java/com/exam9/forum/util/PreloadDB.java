@@ -1,6 +1,8 @@
 package com.exam9.forum.util;
 
 import com.exam9.forum.model.User;
+import com.exam9.forum.repository.CommentRepository;
+import com.exam9.forum.repository.ThemeRepository;
 import com.exam9.forum.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +18,11 @@ public class PreloadDB {
     }
 
     @Bean
-    CommandLineRunner initDatabase(UserRepository ur){
+    CommandLineRunner initDatabase(UserRepository ur, ThemeRepository tr, CommentRepository cr){
         return (args) -> {
             ur.deleteAll();
+            tr.deleteAll();
+            cr.deleteAll();
             User user = new User();
             user.setMail("admin@a.r");
             user.setName("admin");
